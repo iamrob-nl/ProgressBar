@@ -1,6 +1,56 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<widget id="RoundProgressBar.widget.RoundProgressBar" needsEntityContext="false" xmlns="http://www.mendix.com/widget/1.0/">
+<widget id="RoundProgressBar.widget.RoundProgressBar" needsEntityContext="true" xmlns="http://www.mendix.com/widget/1.0/">
     <name>RoundProgressBar</name>
-    <description>The description of this widget.</description>
+    <description>A rounded progressbar.</description>
     <icon>iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAQ1JREFUeNpiYKAQMGKIBM9UAJIJQGwPxAJQ0Q9AfBCIFzCsTX+A3YDgmSDF9UBsAMQLgXgDUPEHJLkAII4H4gtA3AiTY0RSsB+scW36BLxuDp5ZADXIEWQIE1R4PhBPJKgZBCBqJgJxP8QFwTMdgHQ+UCKQpNALnrkeZBATWDPIT6SDRoje4JnnyY5DoF4maBRhBTIO1QkgjMcIeCBiACWbUoGfrOzzf7BxxuNzBBMuzaBo5f3+ubA32aKQkAEC0HSADEBRNPHeke4J8eEuF3D4H6RHAGTARmgqg9kO07yAQBCCwmYjI9QkUEwYKr28AzYVqPkCgdBXgKZcQ5iAAxA3kBB9DUAcwEANABBgAEVzUtlO5PvAAAAAAElFTkSuQmCC</icon>
+    <properties>
+      <property key="showValueAttr" type="boolean" defaultValue="true">
+        <caption>Display value</caption>
+        <category>Appearance</category>
+        <description>Display the value in the gauge.</description>
+      </property>
+      <property key="valueAttr" type="attribute" required="true" defaultValue="">
+          <caption>Value</caption>
+          <category>Appearance</category>
+          <description>Current value for the progressbar.</description>
+          <attributeTypes>
+              <attributeType name="Integer" />
+          </attributeTypes>
+      </property>
+      <property key="showSecondLineAttr" type="boolean" defaultValue="true">
+        <caption>Display second line</caption>
+        <category>Appearance</category>
+        <description>Display a second line of text.</description>
+      </property>
+      <property key="secondLineAttr" type="attribute" required="false">
+          <caption>Second line text</caption>
+          <category>Appearance</category>
+          <description>Can be used as short description.</description>
+          <attributeTypes>
+              <attributeType name="String" />
+          </attributeTypes>
+      </property>
+      <property key="ColorPrimaryAttr" type="attribute" required="false">
+          <caption>Arch color</caption>
+          <category>Appearance</category>
+          <description>The color of the progressbar.</description>
+          <attributeTypes>
+              <attributeType name="String" />
+          </attributeTypes>
+      </property>
+      <property key="strokeWidthAttr" type="attribute" required="false" defaultValue="">
+        <caption>Stroke width</caption>
+        <category>Appearance</category>
+        <description>Progressbar stroke width. Range between 1 and 10.</description>
+          <attributeTypes>
+              <attributeType name="Integer" />
+          </attributeTypes>
+      </property>
+      <property key="mfToExecute" type="microflow" required="false" defaultValue="">
+          <caption>Microflow</caption>
+          <category>Behavior</category>
+          <description>The microflow to execute on click.</description>
+          <returnType type="Boolean" />
+      </property>
+    </properties>
 </widget>
