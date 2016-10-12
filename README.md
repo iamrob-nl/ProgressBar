@@ -1,4 +1,4 @@
-# RoundProgressBar
+# ProgressBar
 
 This Mendix widget shows a round progressbar.
 

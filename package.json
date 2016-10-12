@@ -1,5 +1,5 @@
 {
-  "name": "RoundProgressBar",
+  "name": "ProgressBar",
   "version": "1.0.0",
   "description": "Show a gauge meter in Mendix",
   "license": "Apache 2",
