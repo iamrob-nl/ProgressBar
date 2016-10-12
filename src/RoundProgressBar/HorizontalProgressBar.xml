@@ -31,7 +31,7 @@
           </attributeTypes>
       </property>
       <property key="ColorPrimaryAttr" type="attribute" required="false">
-          <caption>Arch color</caption>
+          <caption>Line color</caption>
           <category>Appearance</category>
           <description>The color of the progressbar.</description>
           <attributeTypes>
