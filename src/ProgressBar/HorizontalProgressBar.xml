@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<widget id="RoundProgressBar.widget.RoundProgressBar" needsEntityContext="true" xmlns="http://www.mendix.com/widget/1.0/">
-    <name>RoundProgressBar</name>
-    <description>A rounded progressbar.</description>
-    <icon>iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAQtJREFUeNpiZEADaWlpCUAqHogd2qQuMHAy/YVJHQDihdx1Zxcgq2dE0qgApNYDsQFMDM0AGLgAxIFAgx7ADYBqPg/EAsi2AfGDfpmzIL4CzFVQ+Q9AbAgyhAUqsB5Jc+KsWbPgzpyFsHnB1yZjkPfmQ9WC9BgyQv08H5tmbADJELB6JqjTwM4mpBkEoIF4AMqNZ0Ly10IG4gFMrQMTKKRBGBq6xIIHMAYTKJpAGBjaAgxkACYktgIJ+hSQDYAHCAkGwAOeCTlAoFHEQEQ0wgOeESp4HikJJ6Kndxxp4AJQnSEsJQYiJeX5QIXxUJddgIphS8qBKJkJqAkjM+EAmJkJizORbcObnQECDAAXfWDC+cHuTwAAAABJRU5ErkJggg==</icon>
+<widget id="ProgressBar.widget.HorizontalProgressBar" needsEntityContext="true" xmlns="http://www.mendix.com/widget/1.0/">
+    <name>HorizontalProgressBar</name>
+    <description>A horizontal progressbar.</description>
+    <icon>iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACtJREFUeNpiYBgFwwAwfm0yfg+kBYhR/P0fM0PVMwNkoQ9Mo2E4CoAAIMAAa3MHJaOBzm4AAAAASUVORK5CYII=</icon>
     <properties>
       <property key="showValueAttr" type="boolean" defaultValue="true">
         <caption>Display value</caption>
@@ -31,7 +31,7 @@
           </attributeTypes>
       </property>
       <property key="ColorPrimaryAttr" type="attribute" required="false">
-          <caption>Arch color</caption>
+          <caption>Line color</caption>
           <category>Appearance</category>
           <description>The color of the progressbar.</description>
           <attributeTypes>

@@ -34,16 +34,16 @@ define([
   "dojo/html",
   "dojo/_base/event",
 
-  "RoundProgressBar/lib/jquery-1.11.2",
-  "dojo/text!RoundProgressBar/widget/template/RoundProgressBar.html",
+  "ProgressBar/lib/jquery-1.11.2",
+  "dojo/text!ProgressBar/widget/template/HorizontalProgressBar.html",
 
-  "RoundProgressBar/lib/velocity"
+  "ProgressBar/lib/velocity"
 ], function(declare, _WidgetBase, _TemplatedMixin, dom, dojoDom, dojoProp, dojoGeometry, dojoClass, dojoStyle, dojoConstruct, dojoArray, dojoLang, dojoText, dojoHtml, dojoEvent, _jQuery, widgetTemplate) {
   "use strict";
   var $ = _jQuery.noConflict(true);
 
   // Declare widget's prototype.
-  return declare("RoundProgressBar.widget.RoundProgressBar", [ _WidgetBase, _TemplatedMixin ], {
+  return declare("ProgressBar.widget.HorizontalProgressBar", [ _WidgetBase, _TemplatedMixin ], {
     // _TemplatedMixin will create our dom node using this HTML template.
     templateString: widgetTemplate,
 
@@ -109,23 +109,23 @@ define([
       logger.debug(this.id + "._setupEvents");
     },
 
-    _customColor: function(svgCircle) {
+    _customColor: function(svgLine) {
       logger.debug(this.id + "._customColor");
       var color = this._contextObj ? this._contextObj.get(this.ColorPrimaryAttr) : "";
-      $(svgCircle).attr({
+      $(svgLine).attr({
         "stroke": color
       });
     },
 
-    _strokeWidth: function(svgCircle, svgArch) {
+    _strokeWidth: function(svgLine, line) {
       logger.debug(this.id + "._customStrokeWidth");
       var strokeWidth = this._contextObj ? Number(this._contextObj.get(this.strokeWidthAttr)) : 10;
       if (strokeWidth >= 10) strokeWidth = 10;
-      if (strokeWidth <= 0) strokeWidth = 10;
-      $(svgArch).attr({
-        "style": "stroke-width: "+strokeWidth+"; fill:none; stroke:#E0E4E6;"
+      if (strokeWidth <= 1) strokeWidth = 1;
+      $(line).attr({
+        "style": "stroke-width: "+strokeWidth+"; fill:none; stroke:#E0E4E6; stroke-linecap:round; stroke-linejoin:round;"
       });
-      $(svgCircle).attr({
+      $(svgLine).attr({
         "style": "stroke-width: "+strokeWidth+"; fill:none; stroke-linecap:round; stroke-linejoin:round;"
       });
     },
@@ -139,8 +139,10 @@ define([
 
     _showSecondLine: function(secondLine, widgetId) {
       if(this.showSecondLineAttr === true){
-        var secondLineTxt = widgetId + " #" + this.secondLine.id;
-        $(secondLineTxt).text(secondLine);
+        if(secondLine && secondLine !== "") {
+          var secondLineTxt = widgetId + " #" + this.secondLine.id;
+          $(secondLineTxt).text(secondLine);
+        }
       }
     },
 
@@ -153,33 +155,32 @@ define([
 
       // Variable SVG elements
       var widgetId = "#" + this.id;
-      var svgCircle = widgetId + " #" + this.svgCircle.id;
-      var svgArch = widgetId + " #" + this.arch.id;
+      var svgLine = widgetId + " #" + this.svgLine.id;
+      var line = widgetId + " #" + this.line.id;
 
       if (value <= 0) value = 0;
       if (value >= 100) value = 100;
       var percentage = value;
 
-      var maxAngle = parseInt(2 * Math.PI * 133);
-      var currentProgress = parseInt((maxAngle / 100) * percentage);
-      var time = parseInt(300 / currentProgress); // 0.3 sec.
+      var maxWidth = $(svgLine).attr("x2");
+      var currentProgress = parseInt((maxWidth / 100) * percentage);
 
       // Show the percentage and second line texts
       this._showVariable(value, widgetId);
       this._showSecondLine(secondLine, widgetId);
 
       // Customize the arch color
-      this._customColor(svgCircle);
+      this._customColor(svgLine);
 
       // Customize stroke-width
-      this._strokeWidth(svgCircle, svgArch);
+      this._strokeWidth(svgLine, line);
 
       // animate the progressbar
-      $(svgCircle).velocity({
-        "stroke-dashoffset": maxAngle,
-        "stroke-dasharray": maxAngle
+      $(svgLine).velocity({
+        "stroke-dashoffset": maxWidth,
+        "stroke-dasharray": maxWidth
       }, 0).velocity({
-        "stroke-dashoffset": maxAngle - currentProgress
+        "stroke-dashoffset": maxWidth - currentProgress
       }, {duration: 1800, delay: 400});
 
       // Increase this value to make every SVG use unique ID's
@@ -278,6 +279,6 @@ define([
   });
 });
 
-require(["RoundProgressBar/widget/RoundProgressBar"], function() {
+require(["ProgressBar/widget/HorizontalProgressBar"], function() {
   "use strict";
 });
