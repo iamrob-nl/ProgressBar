@@ -8,9 +8,9 @@
 
 
 (function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
+    if (typeof define === "function" && define.amd) {
         // AMD. Register as an anonymous module.
-        define(['RoundProgressBar/lib/jquery-1.11.2'], factory);
+        define(["ProgressBar/lib/jquery-1.11.2"], factory);
     }
 }(this, function(global) {
 
